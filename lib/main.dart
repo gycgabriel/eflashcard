@@ -148,13 +148,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     // flashcards document not found
                     List<QueryDocumentSnapshot<Object?>> _qds = _qs.docs;
                     _flashcards = [];
-                    _qds.forEach((doc) {
+                    for (var doc in _qds) {
                       // Godsend https://stackoverflow.com/a/60246487
                       // https://stackoverflow.com/a/63529675
                       var _data = doc.data() as Map;
                       _flashcards.add(Flashcard(
                           en: _data["en"], hr: _data["hr"], kj: _data["kj"]));
-                    });
+                    }
                     _currIndex =
                         (_currIndex > _flashcards.length - 1 || _currIndex < 0)
                             ? 0
